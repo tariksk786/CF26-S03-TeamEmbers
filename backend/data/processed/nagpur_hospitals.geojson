@@ -1,0 +1,424 @@
+{
+  "type": "FeatureCollection",
+  "name": "Nagpur hospitals and clinics",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "H-01",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0845779,
+          21.1424351
+        ]
+      },
+      "properties": {
+        "id": "H-01",
+        "osm_id": "3274047298",
+        "osm_type": "node",
+        "name": "Adil Homeo Heart Care Centre",
+        "category": "hospital",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-02",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0853499,
+          21.1406244
+        ]
+      },
+      "properties": {
+        "id": "H-02",
+        "osm_id": "3259661617",
+        "osm_type": "node",
+        "name": "Baheti (Dr) Mukund",
+        "category": "hospital",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-03",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0833343,
+          21.1444649
+        ]
+      },
+      "properties": {
+        "id": "H-03",
+        "osm_id": "3274046986",
+        "osm_type": "node",
+        "name": "Bhiwapurkar Eye Hospital",
+        "category": "hospital",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-04",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0806574,
+          21.1510491
+        ]
+      },
+      "properties": {
+        "id": "H-04",
+        "osm_id": "7081375491",
+        "osm_type": "node",
+        "name": "CGHS Dispensary No. 7",
+        "category": "clinic",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-05",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0826585,
+          21.1444181
+        ]
+      },
+      "properties": {
+        "id": "H-05",
+        "osm_id": "3274042750",
+        "osm_type": "node",
+        "name": "Chandak Nursing Home",
+        "category": "clinic",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-06",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0853012,
+          21.1405412
+        ]
+      },
+      "properties": {
+        "id": "H-06",
+        "osm_id": "7629203267",
+        "osm_type": "node",
+        "name": "Criticare Hospital & Research Institute",
+        "category": "hospital",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-07",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0804307,
+          21.1405273
+        ]
+      },
+      "properties": {
+        "id": "H-07",
+        "osm_id": "7052842194",
+        "osm_type": "node",
+        "name": "Deshpande Nursing Home",
+        "category": "clinic",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-08",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.068171,
+          21.143999
+        ]
+      },
+      "properties": {
+        "id": "H-08",
+        "osm_id": "8805745436",
+        "osm_type": "node",
+        "name": "Dick Dispensary",
+        "category": "centre",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-09",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.083428,
+          21.144979
+        ]
+      },
+      "properties": {
+        "id": "H-09",
+        "osm_id": "7629203215",
+        "osm_type": "node",
+        "name": "Dik Hospital",
+        "category": "hospital",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-10",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0852841,
+          21.1411757
+        ]
+      },
+      "properties": {
+        "id": "H-10",
+        "osm_id": "3259677841",
+        "osm_type": "node",
+        "name": "Dr B K Murali, Hope Hospitals",
+        "category": "hospital",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-11",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0850113,
+          21.1550668
+        ]
+      },
+      "properties": {
+        "id": "H-11",
+        "osm_id": "11099182162",
+        "osm_type": "node",
+        "name": "Dr Palak Jaiswal",
+        "category": "clinic",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-12",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.086869,
+          21.145062
+        ]
+      },
+      "properties": {
+        "id": "H-12",
+        "osm_id": "7629203264",
+        "osm_type": "node",
+        "name": "Dr. Anand Bhutada",
+        "category": "doctors",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-13",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.079803,
+          21.138675
+        ]
+      },
+      "properties": {
+        "id": "H-13",
+        "osm_id": "8261394264",
+        "osm_type": "node",
+        "name": "Dr. Girish Motwani",
+        "category": "clinic",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-14",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0818463,
+          21.1454099
+        ]
+      },
+      "properties": {
+        "id": "H-14",
+        "osm_id": "7052963452",
+        "osm_type": "node",
+        "name": "Dr. Mangala Ketkar",
+        "category": "hospital",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-15",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0796193,
+          21.1401408
+        ]
+      },
+      "properties": {
+        "id": "H-15",
+        "osm_id": "7082352462",
+        "osm_type": "node",
+        "name": "Eye Care Centre",
+        "category": "clinic",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-16",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0848229,
+          21.1545986
+        ]
+      },
+      "properties": {
+        "id": "H-16",
+        "osm_id": "11387104749",
+        "osm_type": "node",
+        "name": "Kingsway Hospital",
+        "category": "hospital",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-17",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0820907,
+          21.1451583
+        ]
+      },
+      "properties": {
+        "id": "H-17",
+        "osm_id": "3274045649",
+        "osm_type": "node",
+        "name": "Mangala Ketkar's",
+        "category": "hospital",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-18",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0831585,
+          21.1551546
+        ]
+      },
+      "properties": {
+        "id": "H-18",
+        "osm_id": "11771031828",
+        "osm_type": "node",
+        "name": "Matruchhaya Spine Clinic",
+        "category": "clinic",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-19",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0779338,
+          21.1450006
+        ]
+      },
+      "properties": {
+        "id": "H-19",
+        "osm_id": "3143169967",
+        "osm_type": "node",
+        "name": "Mure Memorial Hospital",
+        "category": "hospital",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-20",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0857315,
+          21.1412495
+        ]
+      },
+      "properties": {
+        "id": "H-20",
+        "osm_id": "3259678924",
+        "osm_type": "node",
+        "name": "Surelife Hospital",
+        "category": "hospital",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-21",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0842602,
+          21.1418047
+        ]
+      },
+      "properties": {
+        "id": "H-21",
+        "osm_id": "3274047045",
+        "osm_type": "node",
+        "name": "suretech hospital",
+        "category": "hospital",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "H-22",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0789312,
+          21.1480127
+        ]
+      },
+      "properties": {
+        "id": "H-22",
+        "osm_id": "4977256995",
+        "osm_type": "node",
+        "name": "Unnamed medical facility",
+        "category": "hospital",
+        "source": "OpenStreetMap"
+      }
+    }
+  ]
+}

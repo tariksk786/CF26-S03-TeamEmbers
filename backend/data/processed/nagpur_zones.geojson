@@ -1,0 +1,234 @@
+{
+  "type": "FeatureCollection",
+  "name": "LIFEGRID Nagpur simulation zones",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "Z01",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.06727,
+              21.147175
+            ],
+            [
+              79.07569666666666,
+              21.147175
+            ],
+            [
+              79.07569666666666,
+              21.15568
+            ],
+            [
+              79.06727,
+              21.15568
+            ],
+            [
+              79.06727,
+              21.147175
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "Z01",
+        "name": "North-West Simulation Zone",
+        "population_estimate": 23800,
+        "source": "LIFEGRID_SIMULATION",
+        "official_boundary": false
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "Z02",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.07569666666666,
+              21.147175
+            ],
+            [
+              79.08412333333334,
+              21.147175
+            ],
+            [
+              79.08412333333334,
+              21.15568
+            ],
+            [
+              79.07569666666666,
+              21.15568
+            ],
+            [
+              79.07569666666666,
+              21.147175
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "Z02",
+        "name": "North-Central Simulation Zone",
+        "population_estimate": 31700,
+        "source": "LIFEGRID_SIMULATION",
+        "official_boundary": false
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "Z03",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.08412333333334,
+              21.147175
+            ],
+            [
+              79.09255,
+              21.147175
+            ],
+            [
+              79.09255,
+              21.15568
+            ],
+            [
+              79.08412333333334,
+              21.15568
+            ],
+            [
+              79.08412333333334,
+              21.147175
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "Z03",
+        "name": "North-East Simulation Zone",
+        "population_estimate": 26400,
+        "source": "LIFEGRID_SIMULATION",
+        "official_boundary": false
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "Z04",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.06727,
+              21.13867
+            ],
+            [
+              79.07569666666666,
+              21.13867
+            ],
+            [
+              79.07569666666666,
+              21.147175
+            ],
+            [
+              79.06727,
+              21.147175
+            ],
+            [
+              79.06727,
+              21.13867
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "Z04",
+        "name": "South-West Simulation Zone",
+        "population_estimate": 21900,
+        "source": "LIFEGRID_SIMULATION",
+        "official_boundary": false
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "Z05",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.07569666666666,
+              21.13867
+            ],
+            [
+              79.08412333333334,
+              21.13867
+            ],
+            [
+              79.08412333333334,
+              21.147175
+            ],
+            [
+              79.07569666666666,
+              21.147175
+            ],
+            [
+              79.07569666666666,
+              21.13867
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "Z05",
+        "name": "South-Central Simulation Zone",
+        "population_estimate": 35600,
+        "source": "LIFEGRID_SIMULATION",
+        "official_boundary": false
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "Z06",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.08412333333334,
+              21.13867
+            ],
+            [
+              79.09255,
+              21.13867
+            ],
+            [
+              79.09255,
+              21.147175
+            ],
+            [
+              79.08412333333334,
+              21.147175
+            ],
+            [
+              79.08412333333334,
+              21.13867
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "Z06",
+        "name": "South-East Simulation Zone",
+        "population_estimate": 28900,
+        "source": "LIFEGRID_SIMULATION",
+        "official_boundary": false
+      }
+    }
+  ]
+}

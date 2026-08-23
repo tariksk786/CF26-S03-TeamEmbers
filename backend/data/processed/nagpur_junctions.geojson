@@ -1,0 +1,1526 @@
+{
+  "type": "FeatureCollection",
+  "name": "Nagpur selected junctions",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "J-01",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0801886,
+          21.1411618
+        ]
+      },
+      "properties": {
+        "id": "J-01",
+        "osm_id": "4952359838",
+        "name": "Jhansi Rani Square",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-02",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0817574,
+          21.1556187
+        ]
+      },
+      "properties": {
+        "id": "J-02",
+        "osm_id": "293829007",
+        "name": "LIC Square",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-03",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0744199,
+          21.1452485
+        ]
+      },
+      "properties": {
+        "id": "J-03",
+        "osm_id": "296855641",
+        "name": "Maharaja Baug Square",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-04",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0787977,
+          21.1526623
+        ]
+      },
+      "properties": {
+        "id": "J-04",
+        "osm_id": "298090837",
+        "name": "Vidhan Bhavan Square",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-05",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0732757,
+          21.1393902
+        ]
+      },
+      "properties": {
+        "id": "J-05",
+        "osm_id": "297133104",
+        "name": "University Library Square",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-06",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0678788,
+          21.1495201
+        ]
+      },
+      "properties": {
+        "id": "J-06",
+        "osm_id": "2705418515",
+        "name": "Raja Rani Square",
+        "road_way_count": 2,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-07",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0722574,
+          21.1483233
+        ]
+      },
+      "properties": {
+        "id": "J-07",
+        "osm_id": "308481788",
+        "name": "Hislop College Square",
+        "road_way_count": 2,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-08",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0748224,
+          21.1527638
+        ]
+      },
+      "properties": {
+        "id": "J-08",
+        "osm_id": "3073142140",
+        "name": "Aakashwani Square",
+        "road_way_count": 2,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-09",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0794414,
+          21.1388895
+        ]
+      },
+      "properties": {
+        "id": "J-09",
+        "osm_id": "298937303",
+        "name": "Panchsheel Talkies Square",
+        "road_way_count": 2,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-10",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0809881,
+          21.1434953
+        ]
+      },
+      "properties": {
+        "id": "J-10",
+        "osm_id": "4952370029",
+        "name": "Variety Square",
+        "road_way_count": 2,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-11",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0683027,
+          21.153631
+        ]
+      },
+      "properties": {
+        "id": "J-11",
+        "osm_id": "2705418506",
+        "name": "GPO Square",
+        "road_way_count": 2,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-12",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0826547,
+          21.1412806
+        ]
+      },
+      "properties": {
+        "id": "J-12",
+        "osm_id": "6453679380",
+        "name": "Maha Bank Square",
+        "road_way_count": 2,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-13",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0759524,
+          21.1582586
+        ]
+      },
+      "properties": {
+        "id": "J-13",
+        "osm_id": "298604065",
+        "name": "VCA Square",
+        "road_way_count": 1,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-14",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.1017754,
+          21.1473923
+        ]
+      },
+      "properties": {
+        "id": "J-14",
+        "osm_id": "299200843",
+        "name": "Maulana Natik Square",
+        "road_way_count": 1,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-15",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0640686,
+          21.1541999
+        ]
+      },
+      "properties": {
+        "id": "J-15",
+        "osm_id": "297529529",
+        "name": "Ladies Club Square",
+        "road_way_count": 1,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-16",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0796523,
+          21.1388198
+        ]
+      },
+      "properties": {
+        "id": "J-16",
+        "osm_id": "298937189",
+        "name": "Junction J-16",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-17",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0876936,
+          21.1458218
+        ]
+      },
+      "properties": {
+        "id": "J-17",
+        "osm_id": "298091475",
+        "name": "Junction J-17",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-18",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.081035,
+          21.1473379
+        ]
+      },
+      "properties": {
+        "id": "J-18",
+        "osm_id": "293829003",
+        "name": "Junction J-18",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-19",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0804434,
+          21.1412786
+        ]
+      },
+      "properties": {
+        "id": "J-19",
+        "osm_id": "298937188",
+        "name": "Junction J-19",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-20",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0780897,
+          21.1513493
+        ]
+      },
+      "properties": {
+        "id": "J-20",
+        "osm_id": "564884365",
+        "name": "Junction J-20",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-21",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0813903,
+          21.1542307
+        ]
+      },
+      "properties": {
+        "id": "J-21",
+        "osm_id": "10811518237",
+        "name": "Junction J-21",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-22",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0813755,
+          21.1468599
+        ]
+      },
+      "properties": {
+        "id": "J-22",
+        "osm_id": "3140321843",
+        "name": "Junction J-22",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-23",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0809071,
+          21.1525946
+        ]
+      },
+      "properties": {
+        "id": "J-23",
+        "osm_id": "2260192092",
+        "name": "Junction J-23",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-24",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.08725,
+          21.1534699
+        ]
+      },
+      "properties": {
+        "id": "J-24",
+        "osm_id": "7156023750",
+        "name": "Junction J-24",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-25",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0809338,
+          21.1526937
+        ]
+      },
+      "properties": {
+        "id": "J-25",
+        "osm_id": "7274269350",
+        "name": "Junction J-25",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-26",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0744626,
+          21.1493936
+        ]
+      },
+      "properties": {
+        "id": "J-26",
+        "osm_id": "3755346485",
+        "name": "Junction J-26",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-27",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0818376,
+          21.1555781
+        ]
+      },
+      "properties": {
+        "id": "J-27",
+        "osm_id": "7274269352",
+        "name": "Junction J-27",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-28",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0817736,
+          21.1556738
+        ]
+      },
+      "properties": {
+        "id": "J-28",
+        "osm_id": "10665445059",
+        "name": "Junction J-28",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-29",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0896631,
+          21.1449413
+        ]
+      },
+      "properties": {
+        "id": "J-29",
+        "osm_id": "4587738351",
+        "name": "Junction J-29",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-30",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0802285,
+          21.1412949
+        ]
+      },
+      "properties": {
+        "id": "J-30",
+        "osm_id": "298937304",
+        "name": "Junction J-30",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-31",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0743105,
+          21.145194
+        ]
+      },
+      "properties": {
+        "id": "J-31",
+        "osm_id": "12536191715",
+        "name": "Junction J-31",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-32",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0873532,
+          21.1534719
+        ]
+      },
+      "properties": {
+        "id": "J-32",
+        "osm_id": "7156023753",
+        "name": "Junction J-32",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-33",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.072096,
+          21.1457146
+        ]
+      },
+      "properties": {
+        "id": "J-33",
+        "osm_id": "12850000019",
+        "name": "Junction J-33",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-34",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0803934,
+          21.141144
+        ]
+      },
+      "properties": {
+        "id": "J-34",
+        "osm_id": "4952359839",
+        "name": "Junction J-34",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-35",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0810811,
+          21.1525953
+        ]
+      },
+      "properties": {
+        "id": "J-35",
+        "osm_id": "7274269356",
+        "name": "Junction J-35",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-36",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0811176,
+          21.1527092
+        ]
+      },
+      "properties": {
+        "id": "J-36",
+        "osm_id": "7274269355",
+        "name": "Junction J-36",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-37",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0896971,
+          21.1434554
+        ]
+      },
+      "properties": {
+        "id": "J-37",
+        "osm_id": "12031094205",
+        "name": "Junction J-37",
+        "road_way_count": 4,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-38",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0854885,
+          21.1395266
+        ]
+      },
+      "properties": {
+        "id": "J-38",
+        "osm_id": "4939954609",
+        "name": "Junction J-38",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-39",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0882577,
+          21.1451158
+        ]
+      },
+      "properties": {
+        "id": "J-39",
+        "osm_id": "297456314",
+        "name": "Junction J-39",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-40",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0879894,
+          21.1451366
+        ]
+      },
+      "properties": {
+        "id": "J-40",
+        "osm_id": "297456317",
+        "name": "Junction J-40",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-41",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0841769,
+          21.1443807
+        ]
+      },
+      "properties": {
+        "id": "J-41",
+        "osm_id": "2347019593",
+        "name": "Junction J-41",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-42",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0676485,
+          21.1462704
+        ]
+      },
+      "properties": {
+        "id": "J-42",
+        "osm_id": "7232594658",
+        "name": "Junction J-42",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-43",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0815731,
+          21.1527713
+        ]
+      },
+      "properties": {
+        "id": "J-43",
+        "osm_id": "3201698643",
+        "name": "Junction J-43",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-44",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0861634,
+          21.1462583
+        ]
+      },
+      "properties": {
+        "id": "J-44",
+        "osm_id": "2347019650",
+        "name": "Junction J-44",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-45",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0841802,
+          21.146823
+        ]
+      },
+      "properties": {
+        "id": "J-45",
+        "osm_id": "4937867521",
+        "name": "Junction J-45",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-46",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0806335,
+          21.1412547
+        ]
+      },
+      "properties": {
+        "id": "J-46",
+        "osm_id": "7274261794",
+        "name": "Junction J-46",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-47",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0701832,
+          21.1487244
+        ]
+      },
+      "properties": {
+        "id": "J-47",
+        "osm_id": "298603099",
+        "name": "Junction J-47",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-48",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0805606,
+          21.1518648
+        ]
+      },
+      "properties": {
+        "id": "J-48",
+        "osm_id": "12536271114",
+        "name": "Junction J-48",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-49",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0746971,
+          21.1507301
+        ]
+      },
+      "properties": {
+        "id": "J-49",
+        "osm_id": "298604060",
+        "name": "Junction J-49",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-50",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0801355,
+          21.1499084
+        ]
+      },
+      "properties": {
+        "id": "J-50",
+        "osm_id": "3755346497",
+        "name": "Junction J-50",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-51",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0744037,
+          21.1451741
+        ]
+      },
+      "properties": {
+        "id": "J-51",
+        "osm_id": "12536187067",
+        "name": "Junction J-51",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-52",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0732524,
+          21.13928
+        ]
+      },
+      "properties": {
+        "id": "J-52",
+        "osm_id": "4952348519",
+        "name": "Junction J-52",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-53",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0883624,
+          21.1535007
+        ]
+      },
+      "properties": {
+        "id": "J-53",
+        "osm_id": "296923129",
+        "name": "Junction J-53",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-54",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0901939,
+          21.1490359
+        ]
+      },
+      "properties": {
+        "id": "J-54",
+        "osm_id": "299200209",
+        "name": "Junction J-54",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-55",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0721738,
+          21.146213
+        ]
+      },
+      "properties": {
+        "id": "J-55",
+        "osm_id": "12536191742",
+        "name": "Junction J-55",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-56",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0874056,
+          21.1445032
+        ]
+      },
+      "properties": {
+        "id": "J-56",
+        "osm_id": "2347019595",
+        "name": "Junction J-56",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-57",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0905654,
+          21.1524305
+        ]
+      },
+      "properties": {
+        "id": "J-57",
+        "osm_id": "7229895253",
+        "name": "Junction J-57",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-58",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0839756,
+          21.1463718
+        ]
+      },
+      "properties": {
+        "id": "J-58",
+        "osm_id": "2347019648",
+        "name": "Junction J-58",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-59",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0829467,
+          21.144579
+        ]
+      },
+      "properties": {
+        "id": "J-59",
+        "osm_id": "1083529179",
+        "name": "Junction J-59",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-60",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0786597,
+          21.1391441
+        ]
+      },
+      "properties": {
+        "id": "J-60",
+        "osm_id": "298937137",
+        "name": "Junction J-60",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-61",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0849488,
+          21.1432354
+        ]
+      },
+      "properties": {
+        "id": "J-61",
+        "osm_id": "2129678838",
+        "name": "Junction J-61",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-62",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0868803,
+          21.1550377
+        ]
+      },
+      "properties": {
+        "id": "J-62",
+        "osm_id": "9169440175",
+        "name": "Junction J-62",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-63",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0919517,
+          21.1446936
+        ]
+      },
+      "properties": {
+        "id": "J-63",
+        "osm_id": "2347019615",
+        "name": "Junction J-63",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-64",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.067969,
+          21.1445963
+        ]
+      },
+      "properties": {
+        "id": "J-64",
+        "osm_id": "297523186",
+        "name": "Junction J-64",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-65",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0812309,
+          21.146874
+        ]
+      },
+      "properties": {
+        "id": "J-65",
+        "osm_id": "7274261844",
+        "name": "Junction J-65",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-66",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0673655,
+          21.1411671
+        ]
+      },
+      "properties": {
+        "id": "J-66",
+        "osm_id": "4952321192",
+        "name": "Junction J-66",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-67",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0673376,
+          21.1412414
+        ]
+      },
+      "properties": {
+        "id": "J-67",
+        "osm_id": "4952321185",
+        "name": "Junction J-67",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-68",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0825607,
+          21.1412486
+        ]
+      },
+      "properties": {
+        "id": "J-68",
+        "osm_id": "4952361550",
+        "name": "Junction J-68",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-69",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0805703,
+          21.1411421
+        ]
+      },
+      "properties": {
+        "id": "J-69",
+        "osm_id": "4952387054",
+        "name": "Junction J-69",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-70",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0823695,
+          21.1553145
+        ]
+      },
+      "properties": {
+        "id": "J-70",
+        "osm_id": "10807608576",
+        "name": "Junction J-70",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-71",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0809752,
+          21.1434263
+        ]
+      },
+      "properties": {
+        "id": "J-71",
+        "osm_id": "2621874122",
+        "name": "Junction J-71",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-72",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0805045,
+          21.1414028
+        ]
+      },
+      "properties": {
+        "id": "J-72",
+        "osm_id": "7274261792",
+        "name": "Junction J-72",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-73",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0675545,
+          21.1461817
+        ]
+      },
+      "properties": {
+        "id": "J-73",
+        "osm_id": "12850000023",
+        "name": "Junction J-73",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-74",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0747412,
+          21.1527688
+        ]
+      },
+      "properties": {
+        "id": "J-74",
+        "osm_id": "10292691392",
+        "name": "Junction J-74",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-75",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0750676,
+          21.1526251
+        ]
+      },
+      "properties": {
+        "id": "J-75",
+        "osm_id": "7274269339",
+        "name": "Junction J-75",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-76",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0838222,
+          21.140994
+        ]
+      },
+      "properties": {
+        "id": "J-76",
+        "osm_id": "3201880957",
+        "name": "Junction J-76",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-77",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0750599,
+          21.1461258
+        ]
+      },
+      "properties": {
+        "id": "J-77",
+        "osm_id": "12536271021",
+        "name": "Junction J-77",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-78",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0912104,
+          21.1518394
+        ]
+      },
+      "properties": {
+        "id": "J-78",
+        "osm_id": "4136765629",
+        "name": "Junction J-78",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-79",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0870295,
+          21.1536393
+        ]
+      },
+      "properties": {
+        "id": "J-79",
+        "osm_id": "4937874786",
+        "name": "Junction J-79",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "J-80",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0918244,
+          21.1502602
+        ]
+      },
+      "properties": {
+        "id": "J-80",
+        "osm_id": "3750260535",
+        "name": "Junction J-80",
+        "road_way_count": 3,
+        "osm_highway": null,
+        "source": "OpenStreetMap"
+      }
+    }
+  ]
+}

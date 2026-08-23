@@ -1,0 +1,37 @@
+[
+  {
+    "resource_id": "RES-GEN",
+    "resource_type": "MOBILE_GENERATOR",
+    "total": 3,
+    "available": 2,
+    "unit": "units"
+  },
+  {
+    "resource_id": "RES-TRF",
+    "resource_type": "TRAFFIC_RESPONSE_UNIT",
+    "total": 8,
+    "available": 6,
+    "unit": "teams"
+  },
+  {
+    "resource_id": "RES-RPR",
+    "resource_type": "REPAIR_CREW",
+    "total": 6,
+    "available": 4,
+    "unit": "crews"
+  },
+  {
+    "resource_id": "RES-EMS",
+    "resource_type": "EMERGENCY_MAINTENANCE_TEAM",
+    "total": 4,
+    "available": 3,
+    "unit": "teams"
+  },
+  {
+    "resource_id": "RES-TOW",
+    "resource_type": "TOWING_CLEARANCE_UNIT",
+    "total": 4,
+    "available": 3,
+    "unit": "units"
+  }
+]

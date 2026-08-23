@@ -1,0 +1,46 @@
+{
+  "source_file": "map.osm",
+  "source_size_bytes": 3774986,
+  "source": "OpenStreetMap",
+  "attribution": "© OpenStreetMap contributors (ODbL)",
+  "bounds": {
+    "minlat": 21.13867,
+    "minlon": 79.06727,
+    "maxlat": 21.15568,
+    "maxlon": 79.09255
+  },
+  "raw_counts": {
+    "nodes": 12114,
+    "ways": 1955,
+    "relations": 78
+  },
+  "processed_counts": {
+    "selected_road_ways": 448,
+    "road_graph_nodes": 2470,
+    "road_graph_edges": 2720,
+    "junctions_ui": 80,
+    "medical_facilities": 22,
+    "critical_facilities": 12,
+    "lifegrid_infrastructure_nodes": 93,
+    "synthetic_dependency_edges": 161,
+    "scenarios": 8,
+    "emergency_vehicles": 13
+  },
+  "road_types": {
+    "secondary": 64,
+    "tertiary": 71,
+    "residential": 194,
+    "primary": 25,
+    "trunk": 47,
+    "trunk_link": 19,
+    "secondary_link": 22,
+    "tertiary_link": 2,
+    "primary_link": 4
+  },
+  "important_notes": [
+    "Geography and mapped facilities are derived from the supplied Nagpur OpenStreetMap export.",
+    "Operational states, capacities, dependencies, emergency vehicles, population estimates, weather and intervention outcomes are LIFEGRID simulated prototype data.",
+    "No mapped power substations were present in the supplied OSM extract, so power assets are synthetic and clearly labelled.",
+    "Simulation zones are not official Nagpur administrative boundaries."
+  ]
+}

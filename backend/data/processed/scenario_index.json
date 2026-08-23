@@ -1,0 +1,50 @@
+[
+  {
+    "scenario_id": "SCN-NGP-001",
+    "version": "1.0",
+    "name": "Urban Flood & Road Accessibility Cascade",
+    "file": "scenarios/scn-ngp-001.json"
+  },
+  {
+    "scenario_id": "SCN-NGP-002",
+    "version": "1.0",
+    "name": "Critical Power Node Failure",
+    "file": "scenarios/scn-ngp-002.json"
+  },
+  {
+    "scenario_id": "SCN-NGP-003",
+    "version": "1.0",
+    "name": "Peak-Hour Hospital Accessibility Crisis",
+    "file": "scenarios/scn-ngp-003.json"
+  },
+  {
+    "scenario_id": "SCN-NGP-004",
+    "version": "1.0",
+    "name": "Emergency Route Blockage",
+    "file": "scenarios/scn-ngp-004.json"
+  },
+  {
+    "scenario_id": "SCN-NGP-005",
+    "version": "1.0",
+    "name": "Power + Traffic Compound Failure",
+    "file": "scenarios/scn-ngp-005.json"
+  },
+  {
+    "scenario_id": "SCN-NGP-006",
+    "version": "1.0",
+    "name": "Telecom + Emergency Coordination Degradation",
+    "file": "scenarios/scn-ngp-006.json"
+  },
+  {
+    "scenario_id": "SCN-NGP-007",
+    "version": "1.0",
+    "name": "Multi-Emergency Conflict",
+    "file": "scenarios/scn-ngp-007.json"
+  },
+  {
+    "scenario_id": "SCN-NGP-008",
+    "version": "1.0",
+    "name": "50% Telemetry Loss",
+    "file": "scenarios/scn-ngp-008.json"
+  }
+]

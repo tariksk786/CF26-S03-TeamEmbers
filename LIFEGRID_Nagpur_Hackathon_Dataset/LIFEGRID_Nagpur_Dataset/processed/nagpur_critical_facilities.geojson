@@ -1,0 +1,246 @@
+{
+  "type": "FeatureCollection",
+  "name": "Nagpur critical/public facilities",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "CF-01",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0725174,
+          21.1545937
+        ]
+      },
+      "properties": {
+        "osm_id": "3073148507",
+        "name": "Police Control Room Nagpur City",
+        "lat": 21.1545937,
+        "lon": 79.0725174,
+        "category": "POLICE",
+        "id": "CF-01",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CF-02",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0835593,
+          21.144064
+        ]
+      },
+      "properties": {
+        "osm_id": "3259519221",
+        "name": "Police Station",
+        "lat": 21.144064,
+        "lon": 79.0835593,
+        "category": "POLICE",
+        "id": "CF-02",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CF-03",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0803378,
+          21.1442992
+        ]
+      },
+      "properties": {
+        "osm_id": "3259520861",
+        "name": "Sitabuldi Police Station",
+        "lat": 21.1442992,
+        "lon": 79.0803378,
+        "category": "POLICE",
+        "id": "CF-03",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CF-04",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0904355,
+          21.1513767
+        ]
+      },
+      "properties": {
+        "osm_id": "7944681323",
+        "name": "नागपुर रेल्वे स्टेशन",
+        "lat": 21.1513767,
+        "lon": 79.0904355,
+        "category": "RAIL_STATION",
+        "id": "CF-04",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CF-05",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0897729,
+          21.1459896
+        ]
+      },
+      "properties": {
+        "osm_id": "7944687375",
+        "name": "Cotton Market",
+        "lat": 21.1459896,
+        "lon": 79.0897729,
+        "category": "RAIL_STATION",
+        "id": "CF-05",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CF-06",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.081477,
+          21.1543646
+        ]
+      },
+      "properties": {
+        "osm_id": "11368300687",
+        "name": "Kasturchand Park",
+        "lat": 21.1543646,
+        "lon": 79.081477,
+        "category": "RAIL_STATION",
+        "id": "CF-06",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CF-07",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0806347,
+          21.1466946
+        ]
+      },
+      "properties": {
+        "osm_id": "11368300688",
+        "name": "Zero Mile",
+        "lat": 21.1466946,
+        "lon": 79.0806347,
+        "category": "RAIL_STATION",
+        "id": "CF-07",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CF-08",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0871588,
+          21.1402262
+        ]
+      },
+      "properties": {
+        "osm_id": "11368300689",
+        "name": "Sitabuldi",
+        "lat": 21.1402262,
+        "lon": 79.0871588,
+        "category": "RAIL_STATION",
+        "id": "CF-08",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CF-09",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0778268,
+          21.1407181
+        ]
+      },
+      "properties": {
+        "osm_id": "11369581742",
+        "name": "Jhasi Rani Square",
+        "lat": 21.1407181,
+        "lon": 79.0778268,
+        "category": "RAIL_STATION",
+        "id": "CF-09",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CF-10",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0882365,
+          21.1523731
+        ]
+      },
+      "properties": {
+        "osm_id": "13360738966",
+        "name": "Nagpur Junction railway station",
+        "lat": 21.1523731,
+        "lon": 79.0882365,
+        "category": "RAIL_STATION",
+        "id": "CF-10",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CF-11",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.08099377777778,
+          21.139271266666665
+        ]
+      },
+      "properties": {
+        "osm_id": "314142202",
+        "name": "Transit facility",
+        "lat": 21.139271266666665,
+        "lon": 79.08099377777778,
+        "category": "TRANSIT",
+        "id": "CF-11",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CF-12",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.07974376363637,
+          21.14246032727273
+        ]
+      },
+      "properties": {
+        "osm_id": "463506598",
+        "name": "Sitabuldi City Bus Stand",
+        "lat": 21.14246032727273,
+        "lon": 79.07974376363637,
+        "category": "TRANSIT",
+        "id": "CF-12",
+        "source": "OpenStreetMap"
+      }
+    }
+  ]
+}

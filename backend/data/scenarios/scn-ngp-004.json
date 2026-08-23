@@ -1,0 +1,143 @@
+{
+  "scenario_id": "SCN-NGP-004",
+  "version": "1.0",
+  "name": "Emergency Route Blockage",
+  "description": "A blockage on Wardha Road Flyover forces emergency rerouting.",
+  "start_time": "10:00:00",
+  "deterministic": true,
+  "initial_disruption": {
+    "event": "ROAD_BLOCKAGE",
+    "target_id": "R-02"
+  },
+  "timed_events": [
+    {
+      "t_plus_min": 0,
+      "event": "ROAD_BLOCKAGE",
+      "target_id": "R-02",
+      "status": "FAILED",
+      "state": "OBSERVED"
+    },
+    {
+      "t_plus_min": 8,
+      "event": "REROUTE_LOAD",
+      "target_id": "R-08",
+      "status": "DEGRADED",
+      "state": "INFERRED"
+    },
+    {
+      "t_plus_min": 18,
+      "event": "MULTI_VEHICLE_CONFLICT",
+      "target_id": "J-09",
+      "state": "PREDICTED"
+    }
+  ],
+  "assumptions": [
+    "Road blockage is simulated, not a live Nagpur incident."
+  ],
+  "available_resources": [
+    {
+      "resource_id": "RES-GEN",
+      "resource_type": "MOBILE_GENERATOR",
+      "total": 3,
+      "available": 2,
+      "unit": "units"
+    },
+    {
+      "resource_id": "RES-TRF",
+      "resource_type": "TRAFFIC_RESPONSE_UNIT",
+      "total": 8,
+      "available": 6,
+      "unit": "teams"
+    },
+    {
+      "resource_id": "RES-RPR",
+      "resource_type": "REPAIR_CREW",
+      "total": 6,
+      "available": 4,
+      "unit": "crews"
+    },
+    {
+      "resource_id": "RES-EMS",
+      "resource_type": "EMERGENCY_MAINTENANCE_TEAM",
+      "total": 4,
+      "available": 3,
+      "unit": "teams"
+    },
+    {
+      "resource_id": "RES-TOW",
+      "resource_type": "TOWING_CLEARANCE_UNIT",
+      "total": 4,
+      "available": 3,
+      "unit": "units"
+    }
+  ],
+  "candidate_interventions": [
+    {
+      "id": "PLAN-A",
+      "name": "Traffic Diversion & Junction Coordination",
+      "requires": {
+        "TRAFFIC_RESPONSE_UNIT": 2
+      },
+      "setup_time_min": 7,
+      "impact_reduction": 0.48,
+      "accessibility_improvement": 0.31,
+      "cascade_reduction": 2,
+      "secondary_effect": "Moderate delay on diversion roads",
+      "feasibility": 0.94
+    },
+    {
+      "id": "PLAN-B",
+      "name": "Road Clearance + Emergency Corridor",
+      "requires": {
+        "TOWING_CLEARANCE_UNIT": 1,
+        "TRAFFIC_RESPONSE_UNIT": 2
+      },
+      "setup_time_min": 12,
+      "impact_reduction": 0.62,
+      "accessibility_improvement": 0.46,
+      "cascade_reduction": 3,
+      "secondary_effect": "Temporary normal-traffic restriction",
+      "feasibility": 0.88
+    },
+    {
+      "id": "PLAN-C",
+      "name": "Backup Power + Coordinated Traffic Response",
+      "requires": {
+        "MOBILE_GENERATOR": 1,
+        "TRAFFIC_RESPONSE_UNIT": 2,
+        "REPAIR_CREW": 1
+      },
+      "setup_time_min": 10,
+      "impact_reduction": 0.71,
+      "accessibility_improvement": 0.53,
+      "cascade_reduction": 3,
+      "secondary_effect": "Consumes limited generator resource",
+      "feasibility": 0.91
+    }
+  ],
+  "recovery_sequence": [
+    {
+      "t_plus_min": 5,
+      "event": "Response teams deployed"
+    },
+    {
+      "t_plus_min": 12,
+      "event": "Critical junction throughput begins improving"
+    },
+    {
+      "t_plus_min": 22,
+      "event": "Emergency route delay decreases"
+    },
+    {
+      "t_plus_min": 39,
+      "event": "Hospital accessibility returns above safe threshold"
+    },
+    {
+      "t_plus_min": 52,
+      "event": "Cascade contained and key services stabilizing"
+    }
+  ],
+  "telemetry_loss_percent": 0,
+  "data_source": "LIFEGRID_SIMULATION",
+  "geographic_context": "Nagpur OpenStreetMap-derived prototype area"
+}

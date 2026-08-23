@@ -1,0 +1,86 @@
+[
+  {
+    "t_plus_min": 0,
+    "rainfall_mm_per_hr": 4,
+    "visibility": "GOOD",
+    "source": "LIFEGRID_SIMULATION"
+  },
+  {
+    "t_plus_min": 5,
+    "rainfall_mm_per_hr": 8,
+    "visibility": "GOOD",
+    "source": "LIFEGRID_SIMULATION"
+  },
+  {
+    "t_plus_min": 10,
+    "rainfall_mm_per_hr": 16,
+    "visibility": "GOOD",
+    "source": "LIFEGRID_SIMULATION"
+  },
+  {
+    "t_plus_min": 15,
+    "rainfall_mm_per_hr": 28,
+    "visibility": "MODERATE",
+    "source": "LIFEGRID_SIMULATION"
+  },
+  {
+    "t_plus_min": 20,
+    "rainfall_mm_per_hr": 42,
+    "visibility": "LOW",
+    "source": "LIFEGRID_SIMULATION"
+  },
+  {
+    "t_plus_min": 25,
+    "rainfall_mm_per_hr": 58,
+    "visibility": "LOW",
+    "source": "LIFEGRID_SIMULATION"
+  },
+  {
+    "t_plus_min": 30,
+    "rainfall_mm_per_hr": 62,
+    "visibility": "LOW",
+    "source": "LIFEGRID_SIMULATION"
+  },
+  {
+    "t_plus_min": 35,
+    "rainfall_mm_per_hr": 55,
+    "visibility": "LOW",
+    "source": "LIFEGRID_SIMULATION"
+  },
+  {
+    "t_plus_min": 40,
+    "rainfall_mm_per_hr": 44,
+    "visibility": "LOW",
+    "source": "LIFEGRID_SIMULATION"
+  },
+  {
+    "t_plus_min": 45,
+    "rainfall_mm_per_hr": 32,
+    "visibility": "MODERATE",
+    "source": "LIFEGRID_SIMULATION"
+  },
+  {
+    "t_plus_min": 50,
+    "rainfall_mm_per_hr": 20,
+    "visibility": "MODERATE",
+    "source": "LIFEGRID_SIMULATION"
+  },
+  {
+    "t_plus_min": 55,
+    "rainfall_mm_per_hr": 12,
+    "visibility": "GOOD",
+    "source": "LIFEGRID_SIMULATION"
+  },
+  {
+    "t_plus_min": 60,
+    "rainfall_mm_per_hr": 7,
+    "visibility": "GOOD",
+    "source": "LIFEGRID_SIMULATION"
+  },
+  {
+    "t_plus_min": 70,
+    "rainfall_mm_per_hr": 4,
+    "visibility": "GOOD",
+    "source": "LIFEGRID_SIMULATION"
+  }
+]
