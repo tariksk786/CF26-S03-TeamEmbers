@@ -32,7 +32,8 @@ def seed():
         if 'features' in zones_data:
             for feature in zones_data['features']:
                 props = feature.get('properties', {})
-                zone_id = props.get('zone_id')
+                zone_id = props.get('id') or feature.get('id')
+                if not zone_id: continue
                 if not db.query(CityZone).filter(CityZone.id == zone_id).first():
                     zone = CityZone(
                         id=zone_id,
