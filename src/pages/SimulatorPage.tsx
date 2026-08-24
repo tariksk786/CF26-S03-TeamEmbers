@@ -1,20 +1,30 @@
+import { useState } from 'react';
 import { useStore } from '../store/useSimulationStore';
 import { scenarios } from '../data/mockScenarios';
-import { Play, Pause, RotateCcw, FastForward, Zap, Droplets, Radio, Car, AlertOctagon, TrendingUp, GitMerge, ArrowRight, ShieldAlert, CheckCircle2 } from 'lucide-react';
+import { Play, RotateCcw, FastForward, Zap, Droplets, Radio, Car, AlertOctagon, TrendingUp, ShieldAlert, Crosshair, Wifi } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { EvidenceBadge } from '../components/ui/EvidenceBadge';
 import { AssumptionInspector } from '../components/ui/AssumptionInspector';
 import { useNavigate } from 'react-router-dom';
 
-const scenarioIcons: Record<string, any> = { 'power-outage': Zap, 'urban-flood': Droplets, 'telecom-outage': Radio, 'traffic-failure': Car, 'compound-demo': ShieldAlert };
+const scenarioIcons: Record<string, any> = { 'power-outage': Zap, 'urban-flood': Droplets, 'telecom-failure': Radio, 'traffic-failure': Car, 'compound-demo': ShieldAlert, 'water-failure': Droplets, 'hospital-degradation': ShieldAlert, 'emergency-shortage': Car };
 
 export default function SimulatorPage() {
   const store = useStore();
-  const { scenario, nodes, eventTimeline, currentMetrics, predictedNode, loadScenario, advanceClock, reset } = store;
+  const { scenario, nodes, eventTimeline, currentMetrics, predictedNode, loadScenario, advanceClock, reset, injectDisruption, telemetryMode, setTelemetryMode } = store;
   const navigate = useNavigate();
+
+  const [selectedNode, setSelectedNode] = useState<string>('');
+  const [selectedDisruption, setSelectedDisruption] = useState<string>('FAILURE');
+  const [severity, setSeverity] = useState<number>(100);
 
   // Show all events in timeline, sort reverse chronological (newest top)
   const timelineEvents = [...eventTimeline].reverse();
+
+  const handleInject = () => {
+    if (!selectedNode) return;
+    injectDisruption(selectedNode, selectedDisruption, severity);
+  };
 
   return (
     <div className="max-w-[1600px] mx-auto px-4 lg:px-6 py-6 space-y-6">
@@ -42,27 +52,95 @@ export default function SimulatorPage() {
 
       <div className="grid lg:grid-cols-4 gap-6">
         
-        {/* Scenario Library (Left) */}
-        <div className="lg:col-span-1 space-y-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#64748B] border-b border-[#1C2B3A] pb-2">Scenario Library</div>
-          {Object.values(scenarios).map(sc => {
-            const Icon = scenarioIcons[sc.scenarioId] || Zap;
-            const active = scenario?.scenarioId === sc.scenarioId;
-            return (
-              <button key={sc.scenarioId} onClick={() => loadScenario(sc.scenarioId)}
-                className={`w-full text-left p-4 rounded-xl border transition-all ${
-                  active ? 'bg-[#00D4FF]/10 border-[#00D4FF]/40 shadow-[0_0_15px_rgba(0,212,255,0.1)]' : 'bg-[#0D1B2A]/70 border-[#1C2B3A] hover:border-[#2A3A4C]'
-                }`}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <Icon className={`w-4 h-4 ${active ? 'text-[#00D4FF]' : 'text-[#64748B]'}`} />
-                  <span className={`text-[9px] font-bold uppercase tracking-widest ${active ? 'text-[#00D4FF]' : 'text-[#64748B]'}`}>{sc.scenarioId}</span>
+        {/* Left Column: Scenarios & Injection */}
+        <div className="lg:col-span-1 flex flex-col gap-6">
+          
+          <div className="space-y-3">
+            <div className="text-[10px] font-bold uppercase tracking-widest text-[#64748B] border-b border-[#1C2B3A] pb-2">Scenario Library</div>
+            <div className="max-h-[300px] overflow-y-auto pr-2 space-y-2">
+              {Object.values(scenarios).map(sc => {
+                const Icon = scenarioIcons[sc.scenarioId] || Zap;
+                const active = scenario?.scenarioId === sc.scenarioId;
+                return (
+                  <button key={sc.scenarioId} onClick={() => loadScenario(sc.scenarioId)}
+                    className={`w-full text-left p-4 rounded-xl border transition-all ${
+                      active ? 'bg-[#00D4FF]/10 border-[#00D4FF]/40 shadow-[0_0_15px_rgba(0,212,255,0.1)]' : 'bg-[#0D1B2A]/70 border-[#1C2B3A] hover:border-[#2A3A4C]'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2">
+                        <Icon className={`w-4 h-4 ${active ? 'text-[#00D4FF]' : 'text-[#64748B]'}`} />
+                        <span className={`text-[9px] font-bold uppercase tracking-widest ${active ? 'text-[#00D4FF]' : 'text-[#64748B]'}`}>v{sc.version}</span>
+                      </div>
+                    </div>
+                    <div className="text-sm font-bold text-white mb-1">{sc.name}</div>
+                    <div className="text-[10px] text-[#94A3B8] leading-snug line-clamp-2">{sc.desc}</div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="bg-[#0D1B2A] border border-[#1C2B3A] rounded-xl p-5 shadow-lg">
+            <div className="text-[10px] font-bold uppercase tracking-widest text-red-500 mb-4 flex items-center gap-2">
+              <Crosshair className="w-4 h-4" /> Universal Failure Injection
+            </div>
+            
+            <div className="space-y-4">
+              <div>
+                <label className="text-[9px] text-[#64748B] uppercase tracking-widest mb-1 block">Target Infrastructure Node</label>
+                <select 
+                  value={selectedNode} onChange={e => setSelectedNode(e.target.value)}
+                  className="w-full bg-[#07111F] border border-[#1C2B3A] text-white text-xs rounded p-2 focus:outline-none focus:border-[#00D4FF]"
+                >
+                  <option value="">-- Select Node --</option>
+                  {Object.values(nodes).map(n => (
+                    <option key={n.id} value={n.id}>{n.id} - {n.name} ({n.type})</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="text-[9px] text-[#64748B] uppercase tracking-widest mb-1 block">Failure Severity (%)</label>
+                <input 
+                  type="range" min="0" max="100" step="10" 
+                  value={severity} onChange={e => setSeverity(Number(e.target.value))}
+                  className="w-full accent-red-500"
+                />
+                <div className="flex justify-between text-[10px] text-[#94A3B8] mt-1">
+                  <span>Degraded</span>
+                  <span>Failed</span>
                 </div>
-                <div className="text-sm font-bold text-white mb-1">{sc.name}</div>
-                <div className="text-[10px] text-[#94A3B8] leading-snug line-clamp-3">{sc.desc}</div>
+              </div>
+
+              <button 
+                onClick={handleInject} disabled={!selectedNode}
+                className="w-full py-2 bg-red-500/20 text-red-500 border border-red-500/30 font-bold text-xs uppercase tracking-widest rounded hover:bg-red-500 hover:text-white transition-all disabled:opacity-50"
+              >
+                Inject Disruption
               </button>
-            );
-          })}
+            </div>
+          </div>
+
+          <div className="bg-[#0D1B2A] border border-[#1C2B3A] rounded-xl p-5 shadow-lg">
+            <div className="text-[10px] font-bold uppercase tracking-widest text-[#22C55E] mb-4 flex items-center gap-2">
+              <Wifi className="w-4 h-4" /> Telemetry Mode (Data Confidence)
+            </div>
+            <div className="flex gap-2">
+              {[100, 90, 70, 50].map(val => (
+                <button 
+                  key={val} onClick={() => setTelemetryMode(val as any)}
+                  className={`flex-1 py-1.5 text-xs font-bold rounded border transition-colors ${telemetryMode === val ? 'bg-[#22C55E]/20 text-[#22C55E] border-[#22C55E]/40' : 'bg-[#07111F] text-[#64748B] border-[#1C2B3A] hover:border-[#64748B]'}`}
+                >
+                  {val}%
+                </button>
+              ))}
+            </div>
+            <p className="text-[9px] text-[#94A3B8] mt-2 leading-relaxed">
+              Lowering telemetry mode simulates telecom degradation, reducing confidence scores and affecting prediction accuracy.
+            </p>
+          </div>
+
         </div>
 
         {/* Main Cascade Timeline (Center) */}
@@ -105,11 +183,12 @@ export default function SimulatorPage() {
                   }`} />
                   <div className="flex-1">
                     <div className="text-xs font-bold uppercase tracking-widest text-[#94A3B8] mb-1">
-                      {ev.entity} {ev.status !== 'UNKNOWN' && <span className="text-white ml-2">{ev.status}</span>}
+                      {ev.entity} {ev.status !== 'UNKNOWN' && <span className="text-white ml-2">{ev.status.replace('_', ' ')}</span>}
                     </div>
                     <div className="text-sm text-[#E2E8F0] font-medium leading-relaxed">{ev.desc}</div>
                     <div className="mt-2 flex items-center gap-2">
                       <EvidenceBadge type={ev.type as any} /> 
+                      {ev.confidence && <span className="text-[10px] text-[#64748B]">Confidence: {ev.confidence}%</span>}
                     </div>
                   </div>
                 </motion.div>
@@ -169,8 +248,8 @@ export default function SimulatorPage() {
             <div className="bg-gradient-to-br from-[#0D1B2A] to-[#07111F] border border-[#00D4FF]/30 rounded-xl p-5 shadow-[0_0_20px_rgba(0,212,255,0.1)] relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#00D4FF]/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none" />
               <div className="text-[10px] font-bold uppercase tracking-widest text-[#00D4FF] mb-2">System Alert</div>
-              <h3 className="text-sm font-bold text-white mb-2">Interventions Available</h3>
-              <p className="text-xs text-[#94A3B8] mb-4 leading-relaxed">LIFEGRID has generated feasible response plans to mitigate this predicted cascade.</p>
+              <h3 className="text-sm font-bold text-white mb-2">Incidents Generated</h3>
+              <p className="text-xs text-[#94A3B8] mb-4 leading-relaxed">LIFEGRID has assessed new incidents and prioritized them for coordinated response.</p>
               
               <button 
                 onClick={() => navigate('/planner')}

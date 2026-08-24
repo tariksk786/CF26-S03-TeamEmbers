@@ -21,6 +21,7 @@ class InfrastructureNode(Base):
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
     status = Column(String, nullable=False, default="OPERATIONAL") # OPERATIONAL, DEGRADED, FAILED, PREDICTED_RISK, RECOVERING, UNKNOWN
+    service_state = Column(String, nullable=True) # Domain-specific operational label
     capacity = Column(Integer, default=100)
     current_load = Column(Integer, default=0)
     criticality = Column(Integer, default=50)
@@ -33,6 +34,7 @@ class InfrastructureNode(Base):
     data_confidence = Column(Float, default=1.0)
     evidence_category = Column(String, default="INFERRED") # OBSERVED, PREDICTED, INFERRED
     data_source = Column(String, nullable=False)
+    data_provenance = Column(String, default="LIFEGRID_SIMULATION") # OPENSTREETMAP, LIFEGRID_SIMULATION, DERIVED
     metadata_json = Column(JSON, nullable=True)
 
 class RoadNode(Base):
@@ -168,3 +170,121 @@ class AuditEvent(Base):
     confidence = Column(Float, nullable=True)
     reason = Column(String, nullable=True)
     simulated_result = Column(JSON, nullable=True)
+
+# ═══════════════════════════  V2 Models  ══════════════════════════════════════
+
+class Incident(Base):
+    __tablename__ = "incidents"
+    id = Column(String, primary_key=True)
+    simulation_id = Column(String, nullable=False)
+    root_node_id = Column(String, nullable=False)
+    priority = Column(String, default="P4")  # P1, P2, P3, P4
+    status = Column(String, default="UNASSIGNED")  # UNASSIGNED, ASSIGNED, ACKNOWLEDGED, IN_PROGRESS, STABILIZING, RESOLVED, MONITORING
+    title = Column(String, nullable=False)
+    category = Column(String, nullable=False)  # POWER, ROAD, TRAFFIC, HOSPITAL, TELECOM, WATER, FIRE_EMS
+    life_safety_impact = Column(Float, default=0.0)
+    population_affected = Column(Integer, default=0)
+    cascade_growth_risk = Column(Float, default=0.0)
+    time_to_critical_minutes = Column(Integer, default=60)
+    data_confidence = Column(Float, default=1.0)
+    recovery_leverage = Column(Integer, default=0)  # How many downstream risks fixed
+    root_cause_incident_id = Column(String, nullable=True)  # For alert grouping
+    downstream_effects = Column(JSON, nullable=True)  # List of downstream node IDs
+    assigned_actions = Column(JSON, nullable=True)
+    resources_allocated = Column(JSON, nullable=True)
+    next_escalation_threshold = Column(String, nullable=True)
+    why_priority = Column(String, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+class ActionTicket(Base):
+    __tablename__ = "action_tickets"
+    id = Column(String, primary_key=True)
+    incident_id = Column(String, nullable=False)
+    simulation_id = Column(String, nullable=False)
+    priority = Column(String, default="P4")
+    responsible_department = Column(String, nullable=False)  # Traffic Control, Municipal Road/Drainage, Water Utility, etc.
+    action_description = Column(String, nullable=False)
+    target_asset_id = Column(String, nullable=True)
+    required_resources = Column(JSON, nullable=True)
+    expected_setup_minutes = Column(Integer, default=10)
+    status = Column(String, default="GENERATED")  # GENERATED, ASSIGNED, ACKNOWLEDGED, IN_PROGRESS, COMPLETED, VERIFIED, FAILED
+    verification_condition = Column(JSON, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    acknowledged_at = Column(DateTime, nullable=True)
+    completed_at = Column(DateTime, nullable=True)
+    outcome = Column(String, nullable=True)
+
+class CoordinatedResponse(Base):
+    __tablename__ = "coordinated_responses"
+    id = Column(String, primary_key=True)
+    simulation_id = Column(String, nullable=False)
+    incident_id = Column(String, nullable=False)
+    infrastructure_action = Column(JSON, nullable=True)
+    agency_action = Column(JSON, nullable=True)
+    emergency_action = Column(JSON, nullable=True)
+    public_action = Column(JSON, nullable=True)
+    verification_conditions = Column(JSON, nullable=True)
+    status = Column(String, default="PROPOSED")
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+class PublicAdvisory(Base):
+    __tablename__ = "public_advisories"
+    id = Column(String, primary_key=True)
+    simulation_id = Column(String, nullable=False)
+    incident_id = Column(String, nullable=True)
+    advisory_type = Column(String, nullable=False)  # ROAD, WATER, POWER, TELECOM, EMERGENCY, GENERAL
+    affected_area = Column(String, nullable=True)
+    what_happened = Column(String, nullable=True)
+    what_to_avoid = Column(String, nullable=True)
+    alternative = Column(String, nullable=True)
+    estimated_duration = Column(String, nullable=True)
+    next_update_time = Column(String, nullable=True)
+    severity = Column(String, default="MODERATE")
+    status = Column(String, default="DRAFT")  # DRAFT, APPROVED, PUBLISHED, EXPIRED
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+class WaterNode(Base):
+    __tablename__ = "water_nodes"
+    id = Column(String, primary_key=True)
+    infrastructure_node_id = Column(String, nullable=False)
+    pump_status = Column(String, default="OPERATIONAL")
+    pressure = Column(Float, default=100.0)
+    flow = Column(Float, default=100.0)
+    storage_reserve_liters = Column(Integer, default=50000)
+    alternate_source_available = Column(Boolean, default=False)
+    alternate_source_id = Column(String, nullable=True)
+    hospital_dependency = Column(JSON, nullable=True)  # List of hospital IDs depending on this
+    fire_dependency = Column(JSON, nullable=True)  # List of fire station IDs
+
+class BusRoute(Base):
+    __tablename__ = "bus_routes"
+    id = Column(String, primary_key=True)
+    name = Column(String, nullable=False)
+    route_number = Column(String, nullable=True)
+    road_segments = Column(JSON, nullable=True)  # List of road edge IDs or node references
+    key_stops = Column(JSON, nullable=True)
+    status = Column(String, default="NORMAL")  # NORMAL, DIVERTED, PARTIALLY_SUSPENDED, SUSPENDED
+    delay_minutes = Column(Integer, default=0)
+    diversion_info = Column(String, nullable=True)
+
+class TankerResource(Base):
+    __tablename__ = "tanker_resources"
+    id = Column(String, primary_key=True)
+    capacity_liters = Column(Integer, default=10000)
+    current_location = Column(String, nullable=True)
+    current_lat = Column(Float, nullable=True)
+    current_lng = Column(Float, nullable=True)
+    availability = Column(String, default="AVAILABLE")  # AVAILABLE, DEPLOYED, MAINTENANCE
+    travel_time_minutes = Column(Integer, default=15)
+    assigned_zone = Column(String, nullable=True)
+
+class AgencyResource(Base):
+    __tablename__ = "agency_resources"
+    id = Column(String, primary_key=True)
+    agency_category = Column(String, nullable=False)  # Traffic Control, Municipal Road/Drainage, Water Utility, etc.
+    resource_type = Column(String, nullable=False)
+    total = Column(Integer, default=0)
+    available = Column(Integer, default=0)
+    deployed = Column(Integer, default=0)
+    unit = Column(String, nullable=True)

@@ -30,6 +30,10 @@ from backend.engines.cascade_engine import CascadeEngine
 from backend.engines.impact_engine import ImpactEngine
 from backend.engines.accessibility_engine import AccessibilityEngine
 from backend.engines.intervention_engine import InterventionEngine
+from backend.engines.priority_engine import PriorityEngine
+from backend.engines.response_engine import ResponseEngine
+from backend.engines.action_ticket_service import ActionTicketService
+from backend.engines.public_advisory_engine import PublicAdvisoryEngine
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("lifegrid")
@@ -73,6 +77,10 @@ road_engine = RoadEngine()
 cascade_engine = CascadeEngine(graph_engine)
 impact_engine = ImpactEngine(graph_engine, road_engine)
 accessibility_engine = AccessibilityEngine(road_engine)
+priority_engine = PriorityEngine(graph_engine)
+response_engine = ResponseEngine(graph_engine, priority_engine)
+ticket_service = ActionTicketService(None) # DB provided per request or integrated later
+advisory_engine = PublicAdvisoryEngine()
 
 # In-memory simulation states  {sim_id -> dict}
 sim_states: Dict[str, dict] = {}
@@ -382,6 +390,32 @@ async def approve_plan(sim_id: str, plan_type: str = Query(...), db: Session = D
     # Schedule recovery progression
     asyncio.create_task(_run_recovery(sim_id))
     return {"status": "RECOVERING"}
+
+@app.post("/api/simulations/{sim_id}/inject-disruption")
+async def inject_disruption(sim_id: str, node_id: str = Query(...), disruption_type: str = Query(...), severity: int = Query(...)):
+    """Universal Failure Testing System - inject failures into any node type"""
+    state = sim_states.get(sim_id)
+    if not state:
+        raise HTTPException(404)
+        
+    if node_id not in state["nodes"]:
+        raise HTTPException(404, "Node not found")
+        
+    status = "FAILED" if severity >= 80 else "DEGRADED" if severity >= 40 else "PREDICTED_RISK"
+    old_status = state["nodes"][node_id]["status"]
+    state["nodes"][node_id]["status"] = status
+    
+    await manager.broadcast(sim_id, {
+        "type": "NODE_STATE_CHANGED",
+        "payload": {
+            "node_id": node_id, "new_state": status,
+            "event": f"Injected {disruption_type} ({severity}% severity)", "time_minutes": state["time_minutes"]
+        }
+    })
+    
+    # Immediately trigger cascade evaluation
+    asyncio.create_task(_advance_time(sim_id, 0))
+    return {"status": "INJECTED", "node_id": node_id, "new_state": status}
 
 @app.post("/api/simulations/{sim_id}/telemetry-loss")
 async def set_telemetry_loss(sim_id: str, percentage: int = Query(...)):

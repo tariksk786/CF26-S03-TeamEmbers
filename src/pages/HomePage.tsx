@@ -1,11 +1,12 @@
 import { useStore } from '../store/useSimulationStore';
-import { Activity, PlayCircle, ShieldAlert, ArrowRight, Zap, Target, BarChart2, MapPin, CheckCircle } from 'lucide-react';
+import { Activity, PlayCircle, ShieldAlert, ArrowRight, Zap, Target, BarChart2, MapPin, CheckCircle, AlertTriangle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Polyline } from 'react-leaflet';
 import L from 'leaflet';
 import { renderToString } from 'react-dom/server';
 import 'leaflet/dist/leaflet.css';
-import { getRiskLevel } from '../types';
+import { getRiskLevel, getPriorityBg, getPriorityLabel } from '../types';
+import type { IncidentPriority } from '../types';
 
 const getStatusColors = (status: string) => {
   if (status === 'UNKNOWN') return 'bg-gray-500 text-white border-gray-400';
@@ -29,7 +30,7 @@ function makeIcon(status: string) {
 }
 
 export default function HomePage() {
-  const { currentMetrics, start60sDemo, demoActive, nodes, edges, scenario, approvedInterventionId, vehicles } = useStore();
+  const { currentMetrics, start60sDemo, demoActive, nodes, edges, scenario, approvedInterventionId, vehicles, incidents, publicAdvisories } = useStore();
   const navigate = useNavigate();
 
   const handleStartDemo = () => {
@@ -41,7 +42,6 @@ export default function HomePage() {
 
   // Dynamically generate the active cascade sequence from current node states
   const activeNodes = Object.values(nodes).filter(n => ['FAILED', 'DEGRADED', 'PREDICTED_RISK'].includes(n.status));
-  // Sort FAILED first, then DEGRADED, then PREDICTED_RISK
   activeNodes.sort((a, b) => {
     const rank = { FAILED: 1, DEGRADED: 2, PREDICTED_RISK: 3 };
     return (rank[a.status as keyof typeof rank] || 4) - (rank[b.status as keyof typeof rank] || 4);
@@ -49,6 +49,10 @@ export default function HomePage() {
 
   const riskLevel = getRiskLevel(currentMetrics.riskScore);
   
+  // Top 3 incidents
+  const topIncidents = incidents.filter(i => i.status !== 'RESOLVED').slice(0, 3);
+  const otherIncidentCount = Math.max(0, incidents.filter(i => i.status !== 'RESOLVED').length - 3);
+
   // Find top recommended or approved intervention
   const recommendedIntv = scenario?.interventions?.find(i => i.id === approvedInterventionId) || scenario?.interventions?.[0];
 
@@ -65,8 +69,8 @@ export default function HomePage() {
             <h1 className="text-3xl font-extrabold text-white tracking-widest">LIFEGRID</h1>
           </div>
           <p className="text-[#94A3B8] text-lg font-medium leading-relaxed">
-            Urban Life-Safety Decision Intelligence Platform. <br/>
-            <span className="text-[#00D4FF]">Predict Cascades. Protect Lives. Prioritize Response.</span>
+            Urban Cascade Decision & Coordinated Response Intelligence Platform. <br/>
+            <span className="text-[#00D4FF]">Detect → Understand → Predict → Impact → Prioritize → Coordinate → Inform → Act → Verify → Recover</span>
           </p>
         </div>
 
@@ -86,16 +90,16 @@ export default function HomePage() {
       </section>
 
       {/* Main Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 shrink-0">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 shrink-0">
         
         {/* Active Cascade Panel */}
-        <section className="bg-[#0D1B2A] border border-[#1C2B3A] rounded-xl p-6 shadow-lg">
-          <div className="flex items-center gap-2 mb-6">
+        <section className="bg-[#0D1B2A] border border-[#1C2B3A] rounded-xl p-6 shadow-lg lg:col-span-2">
+          <div className="flex items-center gap-2 mb-4">
             <ShieldAlert className="w-5 h-5 text-amber-500" />
             <h2 className="text-sm font-bold text-white uppercase tracking-widest">Active Cascade</h2>
           </div>
 
-          <div className="flex items-center justify-between bg-[#07111F] p-4 rounded-lg border border-[#1C2B3A] mb-6 overflow-x-auto min-h-[60px]">
+          <div className="flex items-center justify-between bg-[#07111F] p-4 rounded-lg border border-[#1C2B3A] mb-4 overflow-x-auto min-h-[60px]">
             <div className="flex items-center shrink-0">
               {activeNodes.length === 0 ? (
                 <span className="text-[#94A3B8] text-xs font-bold uppercase tracking-widest">No Active Cascade</span>
@@ -107,7 +111,7 @@ export default function HomePage() {
                         n.status === 'DEGRADED' ? 'bg-amber-500/10 text-amber-500 border-amber-500/30' : 
                         'bg-purple-500/10 text-purple-400 border-purple-500/30'}`}
                     >
-                      {n.name} {n.status.replace('_', ' ')}
+                      {n.name} {n.serviceState || n.status.replace('_', ' ')}
                     </span>
                     {idx < activeNodes.length - 1 && <ArrowRight className="w-4 h-4 text-[#64748B] mx-2 shrink-0" />}
                   </div>
@@ -138,65 +142,48 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Recommended Response Panel */}
+        {/* Operational Priorities Panel — NEW */}
         <section className="bg-[#0D1B2A] border border-[#1C2B3A] rounded-xl p-6 shadow-lg">
-          <div className="flex items-center gap-2 mb-6">
-            {approvedInterventionId ? (
-              <CheckCircle className="w-5 h-5 text-[#22C55E]" />
-            ) : (
-              <Zap className="w-5 h-5 text-[#00D4FF]" />
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5 text-red-500" />
+              <h2 className="text-sm font-bold text-white uppercase tracking-widest">Priority Queue</h2>
+            </div>
+            {incidents.length > 0 && (
+              <span className="text-[9px] font-bold bg-red-500/15 text-red-500 px-2 py-0.5 rounded border border-red-500/30">
+                {incidents.filter(i => i.status !== 'RESOLVED').length} ACTIVE
+              </span>
             )}
-            <h2 className="text-sm font-bold text-white uppercase tracking-widest">
-              {approvedInterventionId ? 'Active Response Plan' : 'Recommended Response'}
-            </h2>
           </div>
 
-          {recommendedIntv ? (
-            <>
-              <div className="bg-[#07111F] p-4 rounded-lg border border-[#1C2B3A] mb-6">
-                <div className="text-sm font-bold text-white mb-2">{recommendedIntv.title}</div>
-                <div className="text-xs text-[#94A3B8] whitespace-pre-wrap">{recommendedIntv.desc}</div>
-                
-                {approvedInterventionId && vehicles.some(v => v.approvalStatus === 'APPROVED') && (
-                  <div className="mt-4 pt-4 border-t border-[#1C2B3A]">
-                    {vehicles.filter(v => v.approvalStatus === 'APPROVED').map(v => (
-                      <div key={v.id} className="text-xs font-mono text-[#00D4FF] mb-1 last:mb-0 flex items-center gap-2">
-                        <ArrowRight className="w-3 h-3 shrink-0" />
-                        Ambulance {v.id} rerouted. {v.corridorStatus === 'ACTIVE' && 'Emergency corridor active.'}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <div className="grid grid-cols-3 gap-4">
-                <div>
-                  <div className="text-[10px] text-[#64748B] uppercase font-bold tracking-widest mb-1">Accessibility Boost</div>
-                  <div className="text-xl font-bold text-[#00D4FF]">+{recommendedIntv.emergencyAccessibilityImprovementPct}%</div>
-                </div>
-                <div>
-                  <div className="text-[10px] text-[#64748B] uppercase font-bold tracking-widest mb-1">Cascade Reduction</div>
-                  <div className="text-xl font-bold text-[#00D4FF]">-{recommendedIntv.cascadeReduction}</div>
-                </div>
-                <div>
-                  <div className="text-[10px] text-[#64748B] uppercase font-bold tracking-widest mb-1">Impact Reduction</div>
-                  <div className="text-xl font-bold text-[#00D4FF]">-{recommendedIntv.expectedImpactReductionPct}%</div>
-                </div>
-              </div>
-            </>
+          {topIncidents.length === 0 ? (
+            <div className="text-xs text-[#64748B] italic py-6 text-center">No active incidents</div>
           ) : (
-            <div className="text-[#94A3B8] text-sm py-4">No response required.</div>
+            <div className="space-y-3">
+              {topIncidents.map(inc => (
+                <div key={inc.id} className={`p-3 rounded-lg border ${getPriorityBg(inc.priority)} bg-opacity-50`}>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className={`text-[9px] font-bold uppercase tracking-widest border px-1.5 py-0.5 rounded ${getPriorityBg(inc.priority)}`}>
+                      {inc.priority} — {getPriorityLabel(inc.priority as IncidentPriority)}
+                    </span>
+                    <span className="text-[9px] text-[#64748B] font-mono">{inc.category}</span>
+                  </div>
+                  <div className="text-xs font-bold text-white mb-1 truncate">{inc.title}</div>
+                  <div className="text-[10px] text-[#94A3B8] leading-snug truncate">{inc.whyPriority}</div>
+                </div>
+              ))}
+              {otherIncidentCount > 0 && (
+                <button onClick={() => navigate('/planner')} className="w-full text-center text-[10px] font-bold text-[#00D4FF] hover:text-white transition-colors py-2 border border-[#1C2B3A] rounded">
+                  + {otherIncidentCount} more active issue{otherIncidentCount > 1 ? 's' : ''} →
+                </button>
+              )}
+            </div>
           )}
-          
-          <div className="mt-4 text-[10px] text-[#64748B] text-right italic font-bold">
-            * SIMULATED PROTOTYPE OUTPUT
-          </div>
         </section>
-
       </div>
-      
+
       {/* Real-time KPI summary bar */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 shrink-0">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 shrink-0">
         <div className="bg-[#0D1B2A] border border-[#1C2B3A] rounded-lg p-4 flex items-center gap-4">
           <div className="p-2 bg-[#00D4FF]/10 rounded text-[#00D4FF]"><Activity className="w-5 h-5" /></div>
           <div>
@@ -226,6 +213,15 @@ export default function HomePage() {
             <div className="text-[10px] text-[#64748B] uppercase font-bold tracking-widest">Emergency Delay</div>
             <div className={`text-xl font-bold ${currentMetrics.emergencyDelayMin > 0 ? 'text-purple-400' : 'text-[#94A3B8]'}`}>
               +{currentMetrics.emergencyDelayMin} min
+            </div>
+          </div>
+        </div>
+        <div className="bg-[#0D1B2A] border border-[#1C2B3A] rounded-lg p-4 flex items-center gap-4">
+          <div className="p-2 bg-[#22C55E]/10 rounded text-[#22C55E]"><CheckCircle className="w-5 h-5" /></div>
+          <div>
+            <div className="text-[10px] text-[#64748B] uppercase font-bold tracking-widest">Data Confidence</div>
+            <div className={`text-xl font-bold ${(currentMetrics.dataConfidence || 100) < 70 ? 'text-amber-500' : 'text-[#22C55E]'}`}>
+              {currentMetrics.dataConfidence || 100}%
             </div>
           </div>
         </div>
@@ -277,4 +273,3 @@ export default function HomePage() {
     </main>
   );
 }
-
