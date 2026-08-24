@@ -30,10 +30,6 @@ from backend.engines.cascade_engine import CascadeEngine
 from backend.engines.impact_engine import ImpactEngine
 from backend.engines.accessibility_engine import AccessibilityEngine
 from backend.engines.intervention_engine import InterventionEngine
-from backend.engines.priority_engine import PriorityEngine
-from backend.engines.response_engine import ResponseEngine
-from backend.engines.action_ticket_service import ActionTicketService
-from backend.engines.public_advisory_engine import PublicAdvisoryEngine
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("lifegrid")
@@ -77,10 +73,6 @@ road_engine = RoadEngine()
 cascade_engine = CascadeEngine(graph_engine)
 impact_engine = ImpactEngine(graph_engine, road_engine)
 accessibility_engine = AccessibilityEngine(road_engine)
-priority_engine = PriorityEngine(graph_engine)
-response_engine = ResponseEngine(graph_engine, priority_engine)
-ticket_service = ActionTicketService(None) # DB provided per request or integrated later
-advisory_engine = PublicAdvisoryEngine()
 
 # In-memory simulation states  {sim_id -> dict}
 sim_states: Dict[str, dict] = {}
