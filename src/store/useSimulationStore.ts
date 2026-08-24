@@ -332,6 +332,9 @@ export const useStore = create<SimStore>((set, get) => ({
   busRoutes: [...baseBusRoutes], agencyResources: [...baseAgencyResources],
   waterNodes: [...baseWaterNodes], tankers: [...baseTankers],
   verificationResults: [], reassessmentNeeded: false,
+  user: null,
+  login: (user) => set({ user }),
+  logout: () => set({ user: null }),
 
   loadScenario: (id) => {
     const sc = scenarios[id];
@@ -352,10 +355,6 @@ export const useStore = create<SimStore>((set, get) => ({
       // V2 reset
       incidents: [], coordinatedResponses: {}, actionTickets: [], publicAdvisories: [],
       busRoutes: [...baseBusRoutes], verificationResults: [], reassessmentNeeded: false,
-      user: null,
-      
-      login: (user) => set({ user }),
-      logout: () => set({ user: null }),
     });
   },
 
