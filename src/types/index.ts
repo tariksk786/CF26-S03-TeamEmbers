@@ -5,6 +5,14 @@ export type IncidentPriority = 'P1' | 'P2' | 'P3' | 'P4';
 export type IncidentStatus = 'UNASSIGNED' | 'ASSIGNED' | 'ACKNOWLEDGED' | 'IN_PROGRESS' | 'STABILIZING' | 'RESOLVED' | 'MONITORING';
 export type TicketStatus = 'GENERATED' | 'ASSIGNED' | 'ACKNOWLEDGED' | 'IN_PROGRESS' | 'COMPLETED' | 'VERIFIED' | 'FAILED';
 export type InfraCategory = 'POWER' | 'ROAD' | 'TRAFFIC' | 'HOSPITAL' | 'TELECOM' | 'WATER' | 'FIRE_EMS';
+export type AuthRole = 'CITY_COMMAND' | 'TRAFFIC_CONTROL' | 'WATER_UTILITY' | 'POWER_UTILITY' | 'TELECOM_OPERATIONS' | 'EMS' | 'FIRE_SERVICE' | 'HEALTH_HOSPITAL' | 'ADMINISTRATOR';
+
+export interface AuthUser {
+  id: string;
+  email: string;
+  name: string;
+  role: AuthRole;
+}
 
 export interface InfraNode {
   id: string;

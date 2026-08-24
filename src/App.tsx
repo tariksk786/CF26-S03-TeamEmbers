@@ -1,6 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Navbar from './components/layout/Navbar';
+import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
+import PublicViewPage from './pages/PublicViewPage';
 import HomePage from './pages/HomePage';
 import InfrastructureMapPage from './pages/InfrastructureMapPage';
 import SimulatorPage from './pages/SimulatorPage';
@@ -14,6 +17,11 @@ import { useStore } from './store/useSimulationStore';
 
 function ConnectionIndicator() {
   const backendConnected = useStore(s => s.backendConnected);
+  const location = useLocation();
+  
+  // Hide on Landing/Login/Public as they have their own or we want a cleaner UI
+  if (['/', '/login', '/public'].includes(location.pathname)) return null;
+
   return (
     <div className="fixed bottom-3 right-3 z-50 flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-md border"
       style={{
@@ -27,6 +35,46 @@ function ConnectionIndicator() {
   );
 }
 
+function ProtectedRoute({ children }: { children: JSX.Element }) {
+  const user = useStore(s => s.user);
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+}
+
+function Layout() {
+  const location = useLocation();
+  const showNavbar = !['/', '/login', '/public'].includes(location.pathname);
+
+  return (
+    <div className="min-h-screen bg-[#07111F] text-[#E2E8F0] font-sans">
+      {showNavbar && <Navbar />}
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/public" element={<PublicViewPage />} />
+
+        {/* Protected Authority Routes */}
+        <Route path="/command-center" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+        <Route path="/map" element={<ProtectedRoute><InfrastructureMapPage /></ProtectedRoute>} />
+        <Route path="/simulator" element={<ProtectedRoute><SimulatorPage /></ProtectedRoute>} />
+        <Route path="/impact" element={<ProtectedRoute><ImpactAccessibilityPage /></ProtectedRoute>} />
+        <Route path="/planner" element={<ProtectedRoute><ResponsePlannerPage /></ProtectedRoute>} />
+        <Route path="/recovery" element={<ProtectedRoute><RecoveryPage /></ProtectedRoute>} />
+        <Route path="/data-confidence" element={<ProtectedRoute><DataConfidencePage /></ProtectedRoute>} />
+        <Route path="/audit" element={<ProtectedRoute><AuditHistoryPage /></ProtectedRoute>} />
+        <Route path="/about" element={<ProtectedRoute><AboutPage /></ProtectedRoute>} />
+        
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+      <ConnectionIndicator />
+    </div>
+  );
+}
+
 export default function App() {
   const connectBackend = useStore(s => s.connectBackend);
 
@@ -36,21 +84,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-[#07111F] text-[#E2E8F0] font-sans">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/map" element={<InfrastructureMapPage />} />
-          <Route path="/simulator" element={<SimulatorPage />} />
-          <Route path="/impact" element={<ImpactAccessibilityPage />} />
-          <Route path="/planner" element={<ResponsePlannerPage />} />
-          <Route path="/recovery" element={<RecoveryPage />} />
-          <Route path="/data-confidence" element={<DataConfidencePage />} />
-          <Route path="/audit" element={<AuditHistoryPage />} />
-          <Route path="/about" element={<AboutPage />} />
-        </Routes>
-        <ConnectionIndicator />
-      </div>
+      <Layout />
     </BrowserRouter>
   );
 }

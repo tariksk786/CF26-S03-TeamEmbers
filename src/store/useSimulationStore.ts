@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { InfraNode, DepEdge, Scenario, SimulationMetrics, TimelineEvent, NodeStatus, ResourceCounts, Incident, CoordinatedResponse, ActionTicket, PublicAdvisory, IncidentPriority, BusRoute } from '../types';
+import type { InfraNode, DepEdge, Scenario, SimulationMetrics, TimelineEvent, NodeStatus, ResourceCounts, Incident, CoordinatedResponse, ActionTicket, PublicAdvisory, IncidentPriority, BusRoute, AuthUser } from '../types';
 import { scenarios, baseVehicles, baseBusRoutes, baseAgencyResources, baseWaterNodes, baseTankers } from '../data/mockScenarios';
 import { api, connectSimulationWebSocket } from '../lib/api';
 
@@ -67,6 +67,11 @@ interface SimStore {
   verificationResults: any[];
   reassessmentNeeded: boolean;
 
+  // Auth State
+  user: AuthUser | null;
+  login: (user: AuthUser) => void;
+  logout: () => void;
+
   // Actions
   loadScenario: (id: string) => void;
   setTelemetryMode: (mode: 100 | 90 | 70 | 50) => void;
@@ -85,6 +90,7 @@ interface SimStore {
   injectDisruption: (nodeId: string, disruptionType: string, severity: number) => void;
   acknowledgeTicket: (ticketId: string) => void;
   completeTicket: (ticketId: string) => void;
+  updateAdvisory: (advisoryId: string, updates: Partial<PublicAdvisory>) => void;
   approveAdvisory: (advisoryId: string) => void;
   approveCoordinatedResponse: (responseId: string) => void;
 }
@@ -346,6 +352,10 @@ export const useStore = create<SimStore>((set, get) => ({
       // V2 reset
       incidents: [], coordinatedResponses: {}, actionTickets: [], publicAdvisories: [],
       busRoutes: [...baseBusRoutes], verificationResults: [], reassessmentNeeded: false,
+      user: null,
+      
+      login: (user) => set({ user }),
+      logout: () => set({ user: null }),
     });
   },
 
@@ -775,10 +785,16 @@ export const useStore = create<SimStore>((set, get) => ({
     }));
   },
 
+  updateAdvisory: (advisoryId, updates) => {
+    set({
+      publicAdvisories: get().publicAdvisories.map(a => a.id === advisoryId ? { ...a, ...updates } : a)
+    });
+  },
+
   approveAdvisory: (advisoryId) => {
-    set(s => ({
-      publicAdvisories: s.publicAdvisories.map(a => a.id === advisoryId ? { ...a, status: 'APPROVED' } : a)
-    }));
+    set({
+      publicAdvisories: get().publicAdvisories.map(a => a.id === advisoryId ? { ...a, status: 'PUBLISHED' } : a)
+    });
   },
 
   approveCoordinatedResponse: (responseId) => {

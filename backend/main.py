@@ -8,10 +8,11 @@ import logging
 from datetime import datetime
 from typing import List, Dict, Optional
 
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException, Depends, Query
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException, Depends, Query, Response, Request
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 # Ensure the project root is on sys.path so backend.* imports work
@@ -111,6 +112,69 @@ def _audit(db: Session, sim_id: str, scenario_id: str, action: str,
     db.commit()
 
 # ═══════════════════════════  REST API  ═══════════════════════════════════════
+
+# ─── Auth (Mock Prototype) ─────────────────────────────────────────────────────
+
+class LoginRequest(BaseModel):
+    email: str
+    password: str
+    role: str = "CITY_COMMAND"
+
+@app.post("/api/auth/login")
+def login(req: LoginRequest, response: Response):
+    # Mock prototype logic: Accept any password for hackathon
+    if not req.email:
+        raise HTTPException(400, "Email required")
+    
+    # Set a dummy cookie
+    response.set_cookie(key="lifegrid_auth", value=f"session_{req.email}", httponly=True)
+    return {
+        "status": "success",
+        "user": {
+            "id": f"auth-{uuid.uuid4().hex[:6]}",
+            "email": req.email,
+            "name": f"Operator ({req.role})",
+            "role": req.role
+        }
+    }
+
+@app.post("/api/auth/logout")
+def logout(response: Response):
+    response.delete_cookie("lifegrid_auth")
+    return {"status": "logged_out"}
+
+@app.get("/api/auth/me")
+def get_me(request: Request):
+    # Read the dummy cookie
+    cookie = request.cookies.get("lifegrid_auth")
+    if not cookie:
+        raise HTTPException(401, "Not authenticated")
+    email = cookie.split("session_")[-1] if "session_" in cookie else "demo@lifegrid.local"
+    return {
+        "user": {
+            "id": "mock-id",
+            "email": email,
+            "name": "Operator",
+            "role": "CITY_COMMAND"
+        }
+    }
+
+# ─── Public Endpoints (Read-Only) ──────────────────────────────────────────────
+
+@app.get("/api/public/status")
+def public_status():
+    """Returns simplified system status without exposing internal topology."""
+    return {
+        "status": "NORMAL", # Would be derived from active public advisories in a real integrated DB
+        "message": "LIFEGRID public status API active."
+    }
+
+@app.get("/api/public/advisories")
+def get_public_advisories():
+    """Returns only approved, sanitized public advisories."""
+    # In full integration, queries the DB for advisories with status='PUBLISHED'
+    return {"advisories": []}
+
 
 @app.get("/api/health")
 def health_check():

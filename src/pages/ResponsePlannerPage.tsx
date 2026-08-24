@@ -8,10 +8,11 @@ import type { Incident, CoordinatedResponse, IncidentPriority } from '../types';
 type TabId = 'infrastructure' | 'agency' | 'emergency' | 'public' | 'verification';
 
 export default function ResponsePlannerPage() {
-  const { scenario, availableResources, allocatedResources, currentMetrics, noActionBaseline, selectIntervention, selectedInterventionId, approveIntervention, incidents, coordinatedResponses, actionTickets, publicAdvisories, approveCoordinatedResponse, vehicles } = useStore();
+  const { scenario, availableResources, allocatedResources, currentMetrics, noActionBaseline, selectIntervention, selectedInterventionId, approveIntervention, incidents, coordinatedResponses, actionTickets, publicAdvisories, approveCoordinatedResponse, vehicles, approveAdvisory, updateAdvisory } = useStore();
   const navigate = useNavigate();
 
   const [activeTab, setActiveTab] = useState<TabId>('infrastructure');
+  const [isEditingAdvisory, setIsEditingAdvisory] = useState(false);
   const [selectedIncidentId, setSelectedIncidentId] = useState<string | null>(null);
   const [whyExpanded, setWhyExpanded] = useState<Record<string, boolean>>({});
 
@@ -260,16 +261,87 @@ export default function ResponsePlannerPage() {
                   {activeTab === 'public' && (
                     <div className="space-y-4">
                       {incidentAdvisory ? (
-                        <div className="bg-[#07111F] p-4 rounded-lg border border-purple-500/30">
-                          <div className="text-[10px] font-bold text-purple-400 uppercase tracking-widest mb-3">Citizen Advisory Preview</div>
-                          <div className="space-y-3">
-                            <div><div className="text-[9px] text-[#64748B] uppercase mb-1">What Happened</div><div className="text-sm text-[#E2E8F0]">{incidentAdvisory.whatHappened}</div></div>
-                            <div><div className="text-[9px] text-[#64748B] uppercase mb-1">What To Avoid</div><div className="text-sm text-[#E2E8F0]">{incidentAdvisory.whatToAvoid}</div></div>
-                            <div><div className="text-[9px] text-[#64748B] uppercase mb-1">Alternative</div><div className="text-sm text-[#E2E8F0]">{incidentAdvisory.alternative}</div></div>
-                            <div><div className="text-[9px] text-[#64748B] uppercase mb-1">Estimated Duration</div><div className="text-sm text-[#E2E8F0]">{incidentAdvisory.estimatedDuration}</div></div>
-                            <div><div className="text-[9px] text-[#64748B] uppercase mb-1">Next Update</div><div className="text-sm text-[#E2E8F0]">{incidentAdvisory.nextUpdateTime}</div></div>
+                        <div className="bg-[#07111F] p-4 rounded-lg border border-purple-500/30 relative">
+                          <div className="flex justify-between items-center mb-4">
+                            <div className="text-[10px] font-bold text-purple-400 uppercase tracking-widest">Citizen Advisory Preview</div>
+                            {incidentAdvisory.status !== 'PUBLISHED' && (
+                              <button 
+                                onClick={() => setIsEditingAdvisory(!isEditingAdvisory)}
+                                className="text-[9px] text-[#64748B] uppercase font-bold tracking-widest hover:text-white transition-colors"
+                              >
+                                {isEditingAdvisory ? 'Cancel Edit' : 'Edit Advisory'}
+                              </button>
+                            )}
                           </div>
-                          <div className="mt-4 pt-3 border-t border-[#1C2B3A] text-[9px] text-[#64748B] italic font-bold text-center">{incidentAdvisory.simulatedLabel}</div>
+                          
+                          <div className="space-y-4">
+                            <div>
+                              <div className="text-[9px] text-[#64748B] uppercase mb-1">What Happened</div>
+                              {isEditingAdvisory ? (
+                                <textarea 
+                                  value={incidentAdvisory.whatHappened}
+                                  onChange={(e) => updateAdvisory(incidentAdvisory.id, { whatHappened: e.target.value })}
+                                  className="w-full bg-[#1C2B3A] border border-[#2A3F54] rounded p-2 text-sm text-white focus:outline-none focus:border-purple-500/50"
+                                  rows={2}
+                                />
+                              ) : (
+                                <div className="text-sm text-[#E2E8F0]">{incidentAdvisory.whatHappened}</div>
+                              )}
+                            </div>
+                            
+                            <div>
+                              <div className="text-[9px] text-[#64748B] uppercase mb-1">What To Avoid</div>
+                              {isEditingAdvisory ? (
+                                <textarea 
+                                  value={incidentAdvisory.whatToAvoid}
+                                  onChange={(e) => updateAdvisory(incidentAdvisory.id, { whatToAvoid: e.target.value })}
+                                  className="w-full bg-[#1C2B3A] border border-[#2A3F54] rounded p-2 text-sm text-white focus:outline-none focus:border-purple-500/50"
+                                  rows={2}
+                                />
+                              ) : (
+                                <div className="text-sm text-[#E2E8F0]">{incidentAdvisory.whatToAvoid}</div>
+                              )}
+                            </div>
+                            
+                            <div>
+                              <div className="text-[9px] text-[#64748B] uppercase mb-1">Alternative</div>
+                              {isEditingAdvisory ? (
+                                <textarea 
+                                  value={incidentAdvisory.alternative}
+                                  onChange={(e) => updateAdvisory(incidentAdvisory.id, { alternative: e.target.value })}
+                                  className="w-full bg-[#1C2B3A] border border-[#2A3F54] rounded p-2 text-sm text-white focus:outline-none focus:border-purple-500/50"
+                                  rows={2}
+                                />
+                              ) : (
+                                <div className="text-sm text-[#E2E8F0]">{incidentAdvisory.alternative}</div>
+                              )}
+                            </div>
+                            
+                            <div className="grid grid-cols-2 gap-4">
+                              <div><div className="text-[9px] text-[#64748B] uppercase mb-1">Estimated Duration</div><div className="text-sm text-[#E2E8F0]">{incidentAdvisory.estimatedDuration}</div></div>
+                              <div><div className="text-[9px] text-[#64748B] uppercase mb-1">Next Update</div><div className="text-sm text-[#E2E8F0]">{incidentAdvisory.nextUpdateTime}</div></div>
+                            </div>
+                          </div>
+                          
+                          <div className="mt-6 pt-4 border-t border-[#1C2B3A] flex items-center justify-between">
+                            <div className="text-[9px] text-[#64748B] italic font-bold">{incidentAdvisory.simulatedLabel}</div>
+                            
+                            {incidentAdvisory.status !== 'PUBLISHED' ? (
+                              <button
+                                onClick={() => {
+                                  setIsEditingAdvisory(false);
+                                  approveAdvisory(incidentAdvisory.id);
+                                }}
+                                className="px-4 py-2 bg-purple-500/20 text-purple-400 border border-purple-500/40 rounded text-xs font-bold uppercase tracking-widest hover:bg-purple-500/30 transition-colors flex items-center gap-2"
+                              >
+                                <CheckCircle2 className="w-4 h-4" /> Approve Public Advisory
+                              </button>
+                            ) : (
+                              <div className="px-4 py-2 bg-[#10B981]/10 text-[#10B981] border border-[#10B981]/30 rounded text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                                <CheckCircle2 className="w-4 h-4" /> Published
+                              </div>
+                            )}
+                          </div>
                         </div>
                       ) : (
                         <div className="space-y-2">

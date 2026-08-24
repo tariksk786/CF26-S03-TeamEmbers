@@ -4,7 +4,7 @@ import { Activity, Bell, Settings, User, ShieldAlert, Menu, X, ChevronDown } fro
 import { useState } from 'react';
 
 const navLinks = [
-  { to: '/', label: 'Command Center' },
+  { to: '/command-center', label: 'Command Center' },
   { to: '/map', label: 'Infrastructure Map' },
   { to: '/simulator', label: 'Cascade Simulator' },
   { to: '/impact', label: 'Impact & Accessibility' },
@@ -20,7 +20,7 @@ const moreLinks = [
 
 export default function Navbar() {
   const location = useLocation();
-  const { clockLabel, currentMetrics, scenario } = useStore();
+  const { clockLabel, currentMetrics, scenario, user, logout } = useStore();
   const isEmergency = currentMetrics.populationAtRisk > 0;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
@@ -102,14 +102,20 @@ export default function Navbar() {
         </div>
 
         {/* Right icons */}
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-4">
           <div className="flex items-center gap-2 px-3 py-1 rounded bg-[#1C2B3A]">
             <User className="w-4 h-4 text-[#94A3B8]" />
             <div>
-              <div className="text-xs font-semibold text-white leading-none">Operator</div>
-              <div className="text-[9px] text-[#64748B]">Auth Alpha</div>
+              <div className="text-xs font-semibold text-white leading-none">{user?.name || 'Operator'}</div>
+              <div className="text-[9px] text-[#00D4FF] mt-0.5">{user?.role?.replace('_', ' ') || 'CITY COMMAND'}</div>
             </div>
           </div>
+          <button 
+            onClick={logout}
+            className="text-[10px] text-[#94A3B8] hover:text-white uppercase font-bold tracking-widest transition-colors"
+          >
+            Logout
+          </button>
         </div>
 
         {/* Mobile toggle */}
