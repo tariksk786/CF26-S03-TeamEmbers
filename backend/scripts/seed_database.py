@@ -22,6 +22,8 @@ def load_json(filepath):
 
 def seed():
     # Make sure tables exist
+    # Drop all existing tables to ensure the new V2 schema is fully applied
+    Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
     
     db = SessionLocal()
